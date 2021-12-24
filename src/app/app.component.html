@@ -1,0 +1,12 @@
+<div class="container">
+  <input type="text" [(ngModel)]="digitado">
+  <button (click)="escolherAcao()">{{nomeBotao}}</button>
+  <ul>
+    <ng-container *ngFor="let item of listaDeCompras;  index as i">
+      <li>{{item |titlecase}}
+        <button [disabled]="nomeBotao==='editar'" (click)="deletar(i)">deletar</button>
+        <button (click)="editando(item, i)">editar</button>
+      </li>
+    </ng-container>
+  </ul>
+</div>
