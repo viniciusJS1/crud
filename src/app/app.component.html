@@ -1,12 +1,17 @@
 <div class="container">
-  <input type="text" [(ngModel)]="digitado">
-  <button (click)="escolherAcao()">{{nomeBotao}}</button>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="digitado" />
+    <button (click)="escolherAcao()">{{ nomeBotao }}</button>
+  </div>
   <ul>
-    <ng-container *ngFor="let item of listaDeCompras;  index as i">
-      <li>{{item |titlecase}}
-        <button [disabled]="nomeBotao==='editar'" (click)="deletar(i)">deletar</button>
-        <button (click)="editando(item, i)">editar</button>
-      </li>
+    <ng-container *ngFor="let poke of pokeApi$ | async; index as i">
+      <div class="li-container">
+        <a [href]="poke.url" target="blank">{{ poke.name | titlecase }}</a>
+        <!-- <button [disabled]="nomeBotao === 'editar'" (click)="deletar(i)">
+          deletar
+        </button>
+        <button (click)="editando(poke.name, i)">editar</button> -->
+      </div>
     </ng-container>
   </ul>
 </div>
